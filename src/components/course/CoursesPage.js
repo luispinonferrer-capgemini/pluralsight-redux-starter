@@ -19,8 +19,7 @@ class CoursesPage extends React.Component {
   }
 
   onClickSave() {
-    // Not definned second parameter on connect, using injected in props
-    this.props.dispatch(courseActions.createCourse(this.state.course));
+    this.props.createCourse(this.state.course);
   }
 
   courseRow(course, index) {
@@ -50,11 +49,18 @@ CoursesPage.propTypes = {
 };
 
 function mapStateToProps(state, ownProps) {
-  debugger;
   return {
     courses: state.courses,
   };
 }
 
-export default connect(mapStateToProps)(CoursesPage);
-// Second parameter missing, default dispatch property attached by connect
+function mapDispatchToProps(dispatch) {
+  return {
+    createCourse: (course) => dispatch(courseActions.createCourse(course)),
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(CoursesPage);
