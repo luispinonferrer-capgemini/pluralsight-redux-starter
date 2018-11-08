@@ -1,30 +1,29 @@
-import React, {PropTypes} from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-
+import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as courseActions from '../../actions/courseActions';
 
 class ManageCoursePage extends React.Component {
   constructor(props, context) {
     super(props, context);
   }
 
-  render(){
-      return();
+  render() {
+    return <h1>Manage Course</h1>;
   }
 }
 
-ManageCoursePage.PropTypes = {
+ManageCoursePage.PropTypes = {};
 
-};
+function mapStateToProps(state, ownProps) {}
 
-function mapStateToProps(state, ownProps){
-
-};
-
-function mapDispatchToProps(dispatch){
-    return{
-        actions: bindActionCreators(actions, dispatch)
-    };
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(courseActions, dispatch),
+  };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ManageCoursePage);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(ManageCoursePage);
