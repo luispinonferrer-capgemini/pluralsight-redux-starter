@@ -1,7 +1,8 @@
 import React, { PropTypes } from 'react';
 import { Link, IndexLink } from 'react-router';
+import LoadingDots from './LoadingDots';
 
-const Header = () => {
+const Header = ({ loading }) => {
   return (
     <nav>
       <IndexLink to="/" activeClassName="active">
@@ -15,6 +16,7 @@ const Header = () => {
       <IndexLink to="/about" activeClassName="active">
         About
       </IndexLink>
+      {loading && <LoadingDots interval={100} dots={40} />}
     </nav>
   );
 };
